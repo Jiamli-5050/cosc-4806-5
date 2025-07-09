@@ -33,6 +33,12 @@ if (!isset($_SESSION['auth'])) {
         <li class="nav-item">
           <a class="nav-link" href="/reminders/create">Create Reminders</a>
         </li>
+
+        <?php if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin') :?>
+        <li class="nav-item">
+          <a class="nav-link" href="/reports">Reports</a>
+        </li>
+        <?php endif; ?>
         </ul>
       <span class="navbar-text text-white ms-auto"> 
         <?php 
