@@ -35,5 +35,15 @@ class Reminder {
     $statement->execute (['id' => $id]);
   }
 
+  public function admin_report_1 () {
+    $db = db_connect ();
+    $statement = $db->prepare("SELECT users.username, reminders.subject, reminders.created_at FROM reminders 
+    JOIN users ON reminders.user_id = users.id
+    WHERE reminders.deleted_at IS NULL
+    ORDER BY users.username ASC, reminders.created_at DESC");
+    $statement->execute ();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
 }
   ?>

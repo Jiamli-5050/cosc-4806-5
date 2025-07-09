@@ -12,6 +12,9 @@ class Reports extends Controller {
     exit;
   }
 
-  $this->view('reports/index');
+    $reminderModel = $this->model('Reminder');
+    $reminders = $reminderModel->admin_report_1();
+
+  $this->view('reports/index', ['reminders' => $reminders]);
     }
 }
