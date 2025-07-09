@@ -15,12 +15,14 @@ class Reminder {
     return $rows;
   }
 
-  public function create_reminder ($subject) {
+  public function create_reminder ($subject, $user_id) {
     $db = db_connect ();
-    $statement = $db->prepare("INSERT INTO reminders (subject) VALUES (:subject)");
-    $statement->execute (['subject' => $subject]);
+    $statement = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (:subject, :user_id)");
+    $statement->execute([
+      'subject' => $subject,
+      'user_id' => $user_id
+                        ]);
   }
-  
   public function update_reminder ($id, $subject) {
     $db = db_connect ();
     $statement = $db->prepare("UPDATE reminders SET subject = :subject WHERE id = :id");

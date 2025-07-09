@@ -20,7 +20,7 @@ class Reminders extends Controller {
        $subject = trim($_POST['subject']);
        if (!empty($subject)) {
          $reminder = $this->model('Reminder');
-         $reminder->create_reminder($subject,);
+         $reminder->create_reminder($subject, $_SESSION['user_id']);
        }
        }
          header('Location: /reminders');
