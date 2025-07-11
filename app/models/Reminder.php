@@ -45,16 +45,15 @@ class Reminder {
     return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function admin_report_most_reminders() {
+  public function admin_report_count_reminders() {
     $db = db_connect();
     $statement = $db->prepare("SELECT users.username, COUNT(reminders.id) AS reminder_count FROM reminders
     JOIN users ON reminders.user_id = users.id
     WHERE reminders.deleted_at IS NULL
     GROUP BY users.username
-    ORDER BY reminder_count DESC
-    LIMIT 1");
+    ORDER BY reminder_count DESC");
     $statement->execute();
-    return $statement->fetch(PDO::FETCH_ASSOC);
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
 }

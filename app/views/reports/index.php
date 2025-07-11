@@ -25,7 +25,30 @@
       </tr>
       <?php endforeach; ?>
       </tbody>
-    </table>
+        </table>
+
+    <h3 class="mt-4">Count of reminders by user</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Reminders</th>
+          </tr>  
+            </thead>
+             <tbody>
+                <?php if (!empty($data['reminderCounts'])) : ?>
+                <?php foreach ($data['reminderCounts'] as $row): ?>
+         <tr>
+         <td><?= htmlspecialchars($row['username']) ?></td>
+         <td><?= $row['reminder_count']; ?></td>             </tr> 
+         <?php endforeach; ?>
+        <?php else: ?>
+        <tr>
+        <td colspan="2">No reminders found.</td>
+      </tr>
+      <?php endif; ?>
+  </tbody>
+  </table>
     </div>
 
   <?php require_once 'app/views/templates/footer.php'; ?>
