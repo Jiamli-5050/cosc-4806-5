@@ -16,9 +16,13 @@ class Reports extends Controller {
     $reminders = $reminderModel->admin_report_1();
     $reminderCounts = $reminderModel->admin_report_count_reminders();
 
+     $logModel = $this->model('Log');
+     $loginCounts = $logModel->getLoginCountsLast30Days();
+
      $this->view('reports/index', [
                  'reminders' => $reminders, 
-                 'reminderCounts' => $reminderCounts]);
+                 'reminderCounts' => $reminderCounts,
+                 'loginCounts' => $loginCounts]);
 
    }
 }

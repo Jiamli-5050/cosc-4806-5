@@ -35,5 +35,16 @@ class Log {
     $stmt = $db->prepare("INSERT INTO logs (username, attempt, time) VALUES (?, ?, NOW())");
     $stmt->execute([$username, $attempt]);
   }
+  public function getLoginCountsLast30Days() {
+    $db = db_connect();
+    $statement = $db->prepare("SELECT username, COUNT(*) as login_count
+    FROM logs
+    WHERE attempt = 'good'
+    AND time >= NOW() - INTERVAL 30 DAY
+    GROUP BY username
+    ORDER BY login_count DESC");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
 }
 ?>
