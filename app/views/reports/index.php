@@ -49,6 +49,30 @@
       <?php endif; ?>
   </tbody>
   </table>
-    </div>
+
+    <h3 class="mt-4">Count of Logins in the last 30 days by user</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Logins</th>
+        </tr>
+      </thead>
+    <tbody>
+      <?php if (!empty($data['loginCounts'])) : ?>
+      <?php foreach ($data['loginCounts'] as $login): ?>
+      <tr>
+        <td><?=htmlspecialchars($login['username']); ?></td>
+        <td><?= $login['login_count']; ?></td>
+      </tr>
+      <?php endforeach; ?>
+      <?php else: ?>
+      <tr>
+        <td colspan="2">No logins found.</td>
+        </tr>
+      <?php endif; ?>
+      </tbody>
+  </table>
+  </div>
 
   <?php require_once 'app/views/templates/footer.php'; ?>
