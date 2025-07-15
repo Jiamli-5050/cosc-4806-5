@@ -73,6 +73,37 @@
       <?php endif; ?>
       </tbody>
   </table>
-  </div>
+
+<h3 class="mt-4">Login Chart (Last 30 Days)</h3>
+<canvas id="loginChart" height="100"></canvas>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('loginChart').getContext('2d');
+  const loginChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: <?= json_encode(array_column($data['loginCounts'], 'username')) ?>,
+    datasets: [{
+      label: 'Logins in the last 30 days',
+      data: <?= json_encode(array_column($data['loginCounts'], 'login_count')) ?>,
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+          ticks: { stepSize: 1 }
+      }
+    }
+  }
+  });
+</script>
+    
+
 
   <?php require_once 'app/views/templates/footer.php'; ?>
