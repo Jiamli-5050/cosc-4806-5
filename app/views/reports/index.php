@@ -5,7 +5,7 @@
     <p>Welcome to the admin reports page.</p>
     <p>Here you can view reports on user activity and other relevant information.</p>    
 
-    <--- Accordion for all reminders grouped by user -->
+    <!-- Accordion for all reminders grouped by user -->
     <div class="accordion mt-4" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -37,28 +37,40 @@
               </div>
             </div>
 
-    <h3 class="mt-4">Count of reminders by user</h3>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Reminders</th>
-          </tr>  
-            </thead>
-             <tbody>
-                <?php if (!empty($data['reminderCounts'])) : ?>
-                <?php foreach ($data['reminderCounts'] as $row): ?>
-         <tr>
-         <td><?= htmlspecialchars($row['username']) ?></td>
-         <td><?= $row['reminder_count']; ?></td>             </tr> 
-         <?php endforeach; ?>
-        <?php else: ?>
-        <tr>
-        <td colspan="2">No reminders found.</td>
-      </tr>
-      <?php endif; ?>
-  </tbody>
-  </table>
+      <!-- Accordion for total reminders by user -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Total reminders by user
+          </button>
+          </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Total Reminders</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php if (!empty($data['reminderCounts'])) : ?>
+                    <?php foreach ($data['reminderCounts'] as $row): ?>
+                    <tr>
+                      <td><?= htmlspecialchars($row['username']) ?></td>
+                      <td><?= $row['reminder_count'] ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                    <tr>
+                      <td colspan="2">No reminders found.</td>
+                    </tr>
+                    <?php endif; ?>
+                  </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
 
     <h3 class="mt-4">Count of Logins in the last 30 days by user</h3>
     <table class="table table-striped">
