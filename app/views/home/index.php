@@ -4,7 +4,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>You are now logged in. Welcome</h1>
-                <p class="lead">The date today is <?= date("F jS, Y"); ?></p>
             </div>
         </div>
     </div>
