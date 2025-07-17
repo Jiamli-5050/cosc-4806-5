@@ -55,6 +55,11 @@ class Reminder {
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
+  public function get_last_reminder() {
+    $db = db_connect();
+    $statement = $db->query("SELECT subject FROM reminders ORDER BY created_at DESC LIMIT 1");
+    return $statement->fetch(PDO::FETCH_ASSOC);
+  }
 
 }
   ?>

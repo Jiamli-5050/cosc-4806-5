@@ -6,8 +6,8 @@ class Home extends Controller {
       $user = $this->model('User');
       $data = $user->test();
 			
-	    $this->view('home/index');
-	    die;
+      $reminderModel = $this->model('Reminder');
+      $lastReminder = $reminderModel->get_last_reminder();
+      $this->view('home/index', ['lastReminder' => $lastReminder]);
     }
-
 }
