@@ -23,4 +23,6 @@
   </tbody>
  </table>
 </form>
+  </div>
+
 <?php require_once 'app/views/templates/footer.php' ?>

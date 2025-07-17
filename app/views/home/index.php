@@ -14,5 +14,6 @@
             <p> <a href="/logout">Click here to logout</a></p>
         </div>
     </div>
+</div>
 
     <?php require_once 'app/views/templates/footer.php' ?>
