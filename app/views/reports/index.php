@@ -5,27 +5,37 @@
     <p>Welcome to the admin reports page.</p>
     <p>Here you can view reports on user activity and other relevant information.</p>    
 
-    <h3 class="mt-4">All reminders grouped by user</h3>
-
-    <table class="table table-bordered mt-3">
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Reminders</th>
-          <th>Created At</th>
-          
-        </tr>
-      </thead>
-    <tbody>
-      <?php foreach ($data['reminders'] as $reminder): ?>
-      <tr>
-        <td><?= htmlspecialchars($reminder['username']); ?></td>
-        <td><?= htmlspecialchars($reminder['subject']); ?></td>
-        <td><?= htmlspecialchars($reminder['created_at']); ?></td>
-      </tr>
-      <?php endforeach; ?>
-      </tbody>
-        </table>
+    <--- Accordion for all reminders grouped by user -->
+    <div class="accordion mt-4" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            All reminders grouped by user
+          </button>  
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <table class="table table-bordered mt-3">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Reminders</th>
+                    <th>Created On</th>
+                  </tr>
+                </thead>
+              <tbody>
+                <?php foreach ($data['reminders'] as $reminder): ?>
+                <tr>
+                  <td><?= htmlspecialchars($reminder['username']) ?></td>
+                  <td><?= htmlspecialchars($reminder['subject']) ?></td>
+                  <td><?= htmlspecialchars($reminder['created_at']) ?></td>
+                </tr>
+                <?php endforeach; ?>
+              </tbody>
+              </table>
+                </div>
+              </div>
+            </div>
 
     <h3 class="mt-4">Count of reminders by user</h3>
   <table class="table table-striped">
