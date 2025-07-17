@@ -28,26 +28,23 @@ if (!isset($_SESSION['auth'])) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          <a class="nav-link fs-5 px-3 active" aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/reminders">Reminders</a>
+          <a class="nav-link fs-5 px-3" href="/reminders">Reminders</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/reminders/create">Create Reminders</a>
+          <a class="nav-link fs-5 px-3" href="/reminders/create">Create Reminders</a>
         </li>
 
         <?php if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin') :?>
         <li class="nav-item">
-          <a class="nav-link" href="/reports">Reports</a>
+          <a class="nav-link fs-5 px-3" href="/reports">Reports</a>
         </li>
         <?php endif; ?>
         </ul>
-      <span class="navbar-text text-white ms-auto"> 
-        <?php 
-        date_default_timezone_set('America/Toronto'); 
-        echo date('l, F j') . date('S') . date(', Y');
-        ?>
+      <span class="navbar-text ms-auto fs-5 me-2">
+        <a href="/logout" class="text-white text-decoration-none">Logout</a>
       </span>
     </div>
   </div>
