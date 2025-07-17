@@ -107,7 +107,19 @@
               </div>
             </div>
 
-<h3 class="mt-4">Login Chart (Last 30 Days)</h3>
+      <!-- Accordion for login chart -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Login Chart (In the last 30 days)
+            </button>
+            </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <canvas id="loginChart" height="100"></canvas>
+                  </div>
+                </div>
+              </div>
 <canvas id="loginChart" height="100"></canvas>
     </div>
 
@@ -136,7 +148,4 @@
   }
   });
 </script>
-    
-
-
   <?php require_once 'app/views/templates/footer.php'; ?>
