@@ -12,15 +12,15 @@ if (session_status() === PHP_SESSION_NONE) {
 		
 <main role="main" class="container">
     <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="row mt-5">
+            <div class="col-lg-12 text-center">
                 <h1>Please Log In</h1>
             </div>
         </div>
     </div>
 
-<div class="row">
-    <div class="col-sm-auto">
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
 		<form action="/login/verify" method="post" >
 		<fieldset>
 			<div class="form-group">
@@ -37,7 +37,7 @@ if (session_status() === PHP_SESSION_NONE) {
 		</form> 
 
 		<br>
-			<a href="/create">Create Account</a>
+			<a href="/create" class="btn btn-primary">Create Account</a>
 	</div>
 </div>
 </main>

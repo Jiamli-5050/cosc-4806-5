@@ -38,10 +38,10 @@ $error = $_SESSION["createError"] ?? '';
       <input type="password" name="verifypassword" class="form-control" required>
       </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </form>
 
-  <br><a href="index.php">Home Page</a>
+  <br><a href="index.php" class="btn btn-primary mt-3">Home Page</a>
 </main>
 <?php require_once 'app/views/templates/footer.php'; ?>
       
