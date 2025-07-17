@@ -4,6 +4,21 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once 'app/views/templates/header.php' ?>
+
+<!-- View reports reminder, ADMIN ONLY -->
+<?php if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin'): ?>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="reminderToast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Want to see who created which reminders? <a href="/reports" class="text-white text-decoration-underline">Click Here!</a>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
+
 <div class="container">
   <div class="page-header" id="banner">
     <div class="row">
@@ -47,5 +62,17 @@ require_once 'app/views/templates/header.php' ?>
    <?php endforeach; ?>
   </tbody>  
   </table>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<?php if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin'): ?>
+  <script>
+    const toastEl = document.getElementById('reminderToast');
+    if (toastEl) {
+      const toast = new bootstrap.Toast(toastEl, { autohide: false });
+      toast.show();
+    }
+    </script>
+  <?php endif; ?>
 
 <?php require_once 'app/views/templates/footer.php' ?>
