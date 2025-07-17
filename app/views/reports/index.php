@@ -72,29 +72,40 @@
               </div>
             </div>
 
-    <h3 class="mt-4">Count of Logins in the last 30 days by user</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Logins</th>
-        </tr>
-      </thead>
-    <tbody>
-      <?php if (!empty($data['loginCounts'])) : ?>
-      <?php foreach ($data['loginCounts'] as $login): ?>
-      <tr>
-        <td><?=htmlspecialchars($login['username']); ?></td>
-        <td><?= $login['login_count']; ?></td>
-      </tr>
-      <?php endforeach; ?>
-      <?php else: ?>
-      <tr>
-        <td colspan="2">No logins found.</td>
-        </tr>
-      <?php endif; ?>
-      </tbody>
-  </table>
+      <!-- Accordion for count of logins in the last 30 days by user -->  
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Count of Logins in the last 30 days by user
+          </button>
+          </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Login Count</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php if (!empty($data['loginCounts'])) : ?>
+                    <?php foreach ($data['loginCounts'] as $login): ?>
+                    <tr>
+                      <td><?= htmlspecialchars($login['username']) ?></td>
+                      <td><?= $login['login_count'] ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                    <tr>
+                      <td colspan="2">No logins found.</td>
+                    </tr>
+                    <?php endif; ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
 <h3 class="mt-4">Login Chart (Last 30 Days)</h3>
 <canvas id="loginChart" height="100"></canvas>
